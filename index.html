@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="style_cal.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Calculator</title>
 </head>
 <body>
     <h1 class="text-center">Calculator</h1>
     <div class="container">
         <div class="row main-cal text-center">
           <div class="col-md-12 result-div">
-           <h2 ><span id="first-value"></span>&nbsp<span id="action"></span>&nbsp<span id="second-value"></span></h2>
+           <h2 id="tot-result"><span id="first-value"></span>&nbsp<span id="action"></span>&nbsp<span id="second-value"></span></h2>
            <h4 id="result"></h4>
           
           </div>
@@ -107,17 +107,26 @@
                 calculatorBtn.cancelId.addEventListener("click",function(){
                     const firstValue= calculatorBtn.firstInputId.innerText
                     const secondValue = calculatorBtn.secondInputId.innerText
-                    if(secondValue<"0.001"){
-
+                    const actionValue = calculatorBtn.actionId.innerText
+                 
+                    if(firstValue>"0.001" && secondValue>"0.001"){
+                              calculatorBtn.secondInputId.innerText=""
                     }
+
+                    else if(firstValue>"0.001" && secondValue<"0.001"){
+                        calculatorBtn.firstInputId.innerText=""
+                    }
+                    
+
                 }) 
 
               calculatorBtn.onId.addEventListener("click",function(){
                 calculatorBtn.firstInputId.innerText=""
-                calculatorBtn.secondInputId.innerText=""
-                calculatorBtn.actionId=""
+             
+               
               })
-                //Value Asign
+
+         //Value Asign
              for (let i = 0; i < inpBtns.length; i++) {
               const inpBtn= inpBtns[i]
 
