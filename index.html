@@ -113,9 +113,16 @@
                               calculatorBtn.secondInputId.innerText=""
                     }
 
+                    else if(secondValue<"0.001" && (actionValue=="+" || actionValue=="-" || actionValue=="*" || actionValue=="/")){
+                        calculatorBtn.actionId.innerText=""
+                       
+                    }
+                    
                     else if(firstValue>"0.001" && secondValue<"0.001"){
                         calculatorBtn.firstInputId.innerText=""
                     }
+
+               
                     
 
                 }) 
