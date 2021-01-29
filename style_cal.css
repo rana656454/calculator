@@ -1,0 +1,33 @@
+body{
+    background-color: aqua;
+}
+.main-cal{
+    width: 700px;
+    height: 500px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #7f8fa6;
+
+}
+
+
+
+.btn-style{
+    height: 70px;
+    width: 100px;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    background-color: honeydew;
+    color: black;
+}
+
+.result-div{
+    background-color: azure;
+    height: 90px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px 1px rgb(211, 204, 204);
+    border: 10px solid rgb(68, 64, 64);
+
+}

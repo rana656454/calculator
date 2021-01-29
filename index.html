@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="style_cal.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">Calculator</h1>
+    <div class="container">
+        <div class="row main-cal text-center">
+          <div class="col-md-12 result-div">
+           <h2 ><span id="first-value"></span>&nbsp<span id="action"></span>&nbsp<span id="second-value"></span></h2>
+           <h4 id="result"></h4>
+          
+          </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-number " id= "number">1</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-number">2</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-number">3</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style btn-number">4</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style btn-number">5</button>
+                </div>
+
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-number">6</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-number">7</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-number">8</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style btn-number">9</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style btn-number">0</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-action" id="plus">+</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-action">-</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style btn-action">*</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style btn-action">/</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style" id="result-btn">=</button>
+                </div>
+          
+
+
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style" id="on">AC</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style" id="cancel">CE</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success btn-style">M+</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style">M-</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success btn-style" id="mrc">MRC</button>
+                </div>
+          
+
+
+          
+        </div>
+    </div>
+  <script>
+
+
+    
+    const calculatorBtn = {
+      actionId: document.getElementById("action"),   
+      firstInputId:document.getElementById("first-value"),
+      secondInputId:document.getElementById("second-value"),
+      onId:document.getElementById("on"),
+      cancelId:document.getElementById("cancel")
+    
+    }
+
+
+              const resultBtn = document.getElementById("result-btn")
+              const inpBtns = document.getElementsByClassName("btn-number")
+              const actionBtns = document.getElementsByClassName("btn-action")
+              
+                calculatorBtn.cancelId.addEventListener("click",function(){
+                    const firstValue= calculatorBtn.firstInputId.innerText
+                    const secondValue = calculatorBtn.secondInputId.innerText
+                    if(secondValue<"0.001"){
+
+                    }
+                }) 
+
+              calculatorBtn.onId.addEventListener("click",function(){
+                calculatorBtn.firstInputId.innerText=""
+                calculatorBtn.secondInputId.innerText=""
+                calculatorBtn.actionId=""
+              })
+                //Value Asign
+             for (let i = 0; i < inpBtns.length; i++) {
+              const inpBtn= inpBtns[i]
+
+                      inpBtn.addEventListener("click",function(){
+                    const actionValue = calculatorBtn.actionId.innerText
+                    const getfirstInput = calculatorBtn.firstInputId.innerText
+                    const getsecondInput = calculatorBtn.secondInputId.innerText
+                    const value = this.innerText
+                  if(actionValue==""){
+                calculatorBtn.firstInputId.innerText=getfirstInput+value
+                    
+                }
+          
+               else if(actionValue=>"0.001"){
+                calculatorBtn.secondInputId.innerText=getsecondInput+value
+               
+              }
+               
+         
+               
+             else{
+              }          
+                 
+                 })
+
+              
+               }
+
+ // action Asign
+              
+             for (let j = 0; j < actionBtns.length; j++) {
+             const actionBtn = actionBtns[j];
+
+             actionBtn.addEventListener("click",function(){
+               const actionSign = this.innerText
+             calculatorBtn.actionId.innerText=actionSign
+
+             })
+
+             
+             }
+
+             //action processing
+         resultBtn.addEventListener("click",function(){
+             const firstValue = parseFloat(calculatorBtn.firstInputId.innerText)
+             const secondValue = parseFloat(calculatorBtn.secondInputId.innerText)
+             const actionValue = calculatorBtn.actionId.innerText
+               
+
+          if(actionValue=="+"){
+              actionProcessing(firstValue,secondValue,"add")
+          }
+         
+          else if(actionValue=="-"){
+            actionProcessing(firstValue,secondValue,"sub")
+          }
+
+          else if(actionValue=="*"){
+            actionProcessing(firstValue,secondValue,"mul")
+          }
+
+          else if(actionValue=="/"){
+            actionProcessing(firstValue,secondValue,"div")
+          }
+
+          else{
+
+          }
+
+
+      })
+
+  
+
+      function actionProcessing(fValue,sValue,actionType){
+           let result = 0
+          if(actionType =="add"){
+               result=fValue+sValue
+          }
+          else if(actionType=="sub"){
+              result=fValue-sValue
+          }
+          else if(actionType=="mul"){
+              result=fValue*sValue
+          }
+          else if(actionType=="div"){
+              result=fValue/sValue
+          }
+          calculatorBtn.firstInputId.innerText=result
+         // calculatorBtn.actionId.innerText="+"
+         // calculatorBtn.actionId.style.display="none"
+          calculatorBtn.secondInputId.innerText=""
+          calculatorBtn.actionId.innerText=""
+          
+       }
+
+
+  </script>
+
+</body>
+</html>
